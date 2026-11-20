@@ -50,10 +50,9 @@ ul{margin:0;padding:0;list-style:none}
 /* Kopf */
 .site-header{position:sticky;top:0;z-index:50;background:rgba(251,248,242,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
-.brand svg{width:40px;height:40px;flex:none}
-.brand b{font-family:var(--serif);font-weight:600;font-size:1.55rem;letter-spacing:.14em;line-height:1;display:block}
-.brand span{white-space:nowrap;font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:4px}
+.brand{display:inline-flex;flex:none;align-items:center}
+.brand img{display:block;height:90px;width:auto}
+.site-header .brand{margin-block:4px}
 .nav{display:flex;align-items:center;gap:6px}
 .nav>li{position:relative}
 .nav a,.nav button.sub-toggle{white-space:nowrap;display:block;padding:10px 12px;font:600 .93rem/1.2 var(--sans);color:var(--ink);text-decoration:none;background:none;border:0;cursor:pointer;border-radius:8px}
@@ -182,7 +181,7 @@ textarea{min-height:130px;resize:vertical}
 .site-footer h4{font:700 .74rem var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#e3c684;margin:0 0 14px}
 .site-footer li{margin-bottom:8px}
 .site-footer .brand{color:#fff;margin-bottom:16px}
-.site-footer .brand span{color:#cfc3ae}
+.site-footer .brand img{height:140px}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:42px;padding-top:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:.84rem}
 .draft{color:#e3c684}
 
@@ -193,7 +192,7 @@ textarea{min-height:130px;resize:vertical}
 @media (max-width:1200px){
   .menu-btn{display:flex}
   .head-cta{display:none}
-  .nav{position:absolute;left:0;right:0;top:100%;background:var(--cream);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:12px 20px 22px;gap:0;display:none;max-height:calc(100vh - 76px);overflow:auto}
+  .nav{position:absolute;left:0;right:0;top:100%;background:var(--cream);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:12px 20px 22px;gap:0;display:none;max-height:calc(100vh - 100%);overflow:auto}
   .nav.open{display:flex}
   .nav a,.nav button.sub-toggle{padding:14px 4px;font-size:1.05rem;width:100%;text-align:left}
   .sub{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:none;padding:0 0 6px 16px;min-width:0}
@@ -208,7 +207,7 @@ textarea{min-height:130px;resize:vertical}
   .facts ul{grid-template-columns:1fr}
   .split .media{order:-1}
   .hero{min-height:560px}
-  .brand span{display:none}
+  .site-header .brand img{height:72px}
   .btns .btn{width:100%}
 }
 @media (max-width:520px){

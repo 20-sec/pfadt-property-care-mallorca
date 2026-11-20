@@ -21,11 +21,6 @@ WA = '34643202485'
 MAIL = 'pfadt-propertycaremallorca@outlook.de'
 HAS_PORTRAIT = os.path.exists(os.path.join(ROOT, 'assets', 'img', 'leoni.jpg'))
 
-LOGO = ('<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="none" stroke="#a6813a" '
-        'stroke-width="1.4"/><path d="M12 25 24 13l12 12" fill="none" stroke="#a6813a" stroke-width="1.8" '
-        'stroke-linecap="round" stroke-linejoin="round"/><path d="M16 23.5V34h16V23.5" fill="none" stroke="#a6813a" '
-        'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="26.5" r="2.2" '
-        'fill="#a6813a"/><path d="M24 28.5V34" stroke="#a6813a" stroke-width="1.8" stroke-linecap="round"/></svg>')
 WA_ICON = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
            'stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.400L3 20.500l1.700-5.100'
            'A8.5 8.5 0 1 1 21 11.500Z"/><path d="M8.500 10.500h7M8.500 13.500h4.500"/></svg>')
@@ -52,7 +47,7 @@ def head(c, key):
 <title>%s</title>
 <meta name="description" content="%s">
 <meta name="robots" content="noindex, nofollow">
-%s<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+%s<link rel="icon" href="../assets/favicon.png" type="image/png">
 <link rel="preload" href="../assets/fonts/cormorant-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
@@ -62,8 +57,8 @@ def head(c, key):
 
 
 def brand(c):
-    return ('<a class="brand" href="index.html" aria-label="PFADT Property Care Mallorca">%s<div><b>PFADT</b>'
-            '<span>Property Care Mallorca</span></div></a>' % LOGO)
+    return ('<a class="brand" href="index.html"><img src="../assets/img/pfadt-logo.webp" '
+            'width="876" height="716" alt="PFADT Property Care Mallorca"></a>')
 
 
 def header(c, key):
@@ -350,7 +345,7 @@ def render(c, key):
 ROOT_INDEX = '''<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PFADT Property Care Mallorca</title><meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.png" type="image/png">
 <script>(function(){var l=(navigator.language||'de').slice(0,2).toLowerCase();
 location.replace((l==='es'||l==='en'?l:'de')+'/index.html');})();</script>
 <noscript><meta http-equiv="refresh" content="0; url=de/index.html"></noscript>
@@ -359,9 +354,6 @@ a{color:#876726;margin:0 10px;font-weight:700}</style></head>
 <body><p>PFADT Property Care Mallorca<br><br><a href="de/index.html">Deutsch</a><a href="es/index.html">Español</a>
 <a href="en/index.html">English</a></p></body></html>
 '''
-
-FAVICON = LOGO.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ').replace(' aria-hidden="true"', '')
-
 
 def main():
     count = 0
@@ -374,8 +366,6 @@ def main():
             count += 1
     with open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf-8') as f:
         f.write(ROOT_INDEX)
-    with open(os.path.join(ROOT, 'assets', 'favicon.svg'), 'w', encoding='utf-8') as f:
-        f.write(FAVICON)
     print('%d Seiten erzeugt. Porträt vorhanden: %s' % (count, HAS_PORTRAIT))
 
 
