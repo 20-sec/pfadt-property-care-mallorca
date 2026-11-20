@@ -52,7 +52,9 @@ ul{margin:0;padding:0;list-style:none}
 .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px}
 .brand{display:inline-flex;flex:none;align-items:center}
 .brand img{display:block;height:90px;width:auto}
-.site-header .brand{margin-block:4px;filter:contrast(1.05);mix-blend-mode:multiply}
+.site-header .brand{margin-block:4px}
+/* Make the near-white paper transparent before compositing the sticky header. */
+.site-header .brand img{filter:url(#pfadt-ink)}
 .nav{display:flex;align-items:center;gap:6px}
 .nav>li{position:relative}
 .nav a,.nav button.sub-toggle{white-space:nowrap;display:block;padding:10px 12px;font:600 .93rem/1.2 var(--sans);color:var(--ink);text-decoration:none;background:none;border:0;cursor:pointer;border-radius:8px}

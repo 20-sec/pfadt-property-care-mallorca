@@ -73,6 +73,10 @@ def header(c, key):
         l['code'], url(l, key), l['code'], l['code'], ' aria-current="true"' if l is c else '', l['name'],
         l['code'].upper()) for l in LANGS)
     return '''<header class="site-header"><div class="wrap">
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs>
+<filter id="pfadt-ink" color-interpolation-filters="sRGB">
+<feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 -4 3.84 0"/>
+</filter></defs></svg>
 %s
 <nav aria-label="%s"><ul class="nav" id="nav">
 <li class="has-sub"><button class="sub-toggle" type="button" aria-haspopup="true">%s</button><ul class="sub">%s</ul></li>
