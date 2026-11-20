@@ -52,7 +52,7 @@ ul{margin:0;padding:0;list-style:none}
 .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px}
 .brand{display:inline-flex;flex:none;align-items:center}
 .brand img{display:block;height:90px;width:auto}
-.site-header .brand{margin-block:4px}
+.site-header .brand{margin-block:4px;filter:contrast(1.05);mix-blend-mode:multiply}
 .nav{display:flex;align-items:center;gap:6px}
 .nav>li{position:relative}
 .nav a,.nav button.sub-toggle{white-space:nowrap;display:block;padding:10px 12px;font:600 .93rem/1.2 var(--sans);color:var(--ink);text-decoration:none;background:none;border:0;cursor:pointer;border-radius:8px}
@@ -182,6 +182,8 @@ textarea{min-height:130px;resize:vertical}
 .site-footer li{margin-bottom:8px}
 .site-footer .brand{color:#fff;margin-bottom:16px}
 .site-footer .brand img{height:140px}
+/* Invert the artwork to put warm, light lettering directly on the footer. */
+.site-footer .brand{filter:contrast(1.05) grayscale(1) invert(1) sepia(.24) brightness(1.16);mix-blend-mode:screen}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:42px;padding-top:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:.84rem}
 .draft{color:#e3c684}
 
