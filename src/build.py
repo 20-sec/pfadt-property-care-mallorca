@@ -46,7 +46,6 @@ def head(c, key):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>%s</title>
 <meta name="description" content="%s">
-<meta name="robots" content="noindex, nofollow">
 %s<link rel="icon" href="../assets/favicon.png" type="image/png">
 <link rel="preload" href="../assets/fonts/cormorant-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/style.css">
@@ -111,7 +110,7 @@ def footer(c):
 <li>Santanyí, Mallorca</li></ul></div>
 </div>
 <div class="foot-bottom"><span>© 2026 PFADT Property Care Mallorca · <a href="%s">%s</a> · <a href="%s">%s</a></span>
-<span class="draft">%s</span></div>
+</div>
 </div></footer>
 <a class="wa-float" href="%s" rel="noopener" aria-label="%s">%s</a>
 <script src="../assets/site.js" defer></script>
@@ -119,7 +118,7 @@ def footer(c):
 </html>
 ''' % (brand(c), u['foot_text'], n['services'], svc, u['foot_more'], more, n['contact'], PHONE, PHONE_SHOW,
        wa_link(c), MAIL, u['mail_short'], url(c, 'imprint'), u['imprint'], url(c, 'privacy'), u['privacy'],
-       u['draft'], wa_link(c), u['wa'], WA_ICON)
+       wa_link(c), u['wa'], WA_ICON)
 
 
 def buttons(c, light=False, center=False):
@@ -312,7 +311,7 @@ def p_contact(c):
 <label>%s<textarea name="msg" data-label="%s"></textarea></label>
 <div class="btns" style="margin-top:0"><button class="btn btn-wa" type="submit" value="wa">%s%s</button>
 <button class="btn btn-line" type="submit" value="mail">%s</button></div>
-<p class="form-note">%s</p>
+<p class="form-note">%s <a href="%s">%s</a></p>
 </form>
 </div></section>''' % (
         page_hero(c, c['nav']['contact'], k['h'], k['lead']),
@@ -320,18 +319,23 @@ def p_contact(c):
         WA, MAIL, k['subject'], k['intro'], k['form_h'],
         k['f_name'], k['f_name'], k['f_reach'], k['f_reach'], k['f_place'], k['f_place'],
         k['f_service'], k['f_service'], k['f_choose'], opts, k['f_several'], k['f_msg'], k['f_msg'],
-        WA_ICON, k['send_wa'], k['send_mail'], k['note'])
+        WA_ICON, k['send_wa'], k['send_mail'], k['note'], url(c, 'privacy'), u['privacy'])
 
 
 def p_legal(c, key):
     title, ps = c['legal'][key]
     extra = ''
     if key == 'imprint':
-        extra = ('<p><strong>PFADT Property Care Mallorca</strong><br>%s: Leoni Enya Pfadt<br>Mallorca, Illes Balears, '
-                 'España<br><a href="mailto:%s">%s</a><br><a href="tel:%s">%s</a></p>') % (
+        extra = (
+            '<p><strong>PFADT Property Care Mallorca</strong><br>%s: Leoni Enya Pfadt<br>'
+            'Carrer es Morras 1A<br>07659 Cala Figuera<br>Mallorca, Islas Baleares, España<br>'
+            'NIF: Z1536656P<br><a href="mailto:%s">%s</a><br><a href="tel:%s">%s</a></p>'
+        ) % (
             c['legal']['owner'], MAIL, MAIL, PHONE, PHONE_SHOW)
+    content = paras(ps) if key == 'imprint' else ''.join(
+        '<h2>%s</h2><p>%s</p>' % (heading, paragraph) for heading, paragraph in ps)
     return '%s<section><div class="wrap narrow">%s%s</div></section>' % (
-        page_hero(c, c['ui']['legal'], title, ''), extra, paras(ps))
+        page_hero(c, c['ui']['legal'], title, ''), extra, content)
 
 
 def render(c, key):
@@ -348,8 +352,7 @@ def render(c, key):
 
 ROOT_INDEX = '''<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PFADT Property Care Mallorca</title><meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="assets/favicon.png" type="image/png">
+<title>PFADT Property Care Mallorca</title><link rel="icon" href="assets/favicon.png" type="image/png">
 <script>(function(){var l=(navigator.language||'de').slice(0,2).toLowerCase();
 location.replace((l==='es'||l==='en'?l:'de')+'/index.html');})();</script>
 <noscript><meta http-equiv="refresh" content="0; url=de/index.html"></noscript>
